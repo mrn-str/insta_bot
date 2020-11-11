@@ -12,11 +12,13 @@ public class Main {
 
         InstaService instaService = new InstaService();
         for (int i = 0; i < 5000; i++) {
-            IGResponse response = instaService.postComment(getMediaIdFromCode("CHc4OAYnmLY"), "+");
-            System.out.println(response.getError_type());
-            System.out.println(response.getMessage());
+            try {
+                IGResponse response = instaService.postComment(getMediaIdFromCode("CHc4OAYnmLY"), "+");
+            } catch (Exception e) {
+                Thread.sleep(120000);
+            }
             System.out.println("comment #" + i);
-            Thread.sleep((long) (5000 + Math.random()*10000));
+            Thread.sleep((long) (2000 + Math.random()*5000));
         }
     }
 
